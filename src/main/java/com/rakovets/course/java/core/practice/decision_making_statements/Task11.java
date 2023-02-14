@@ -38,8 +38,16 @@ class Task11 {
      * @return <code>latin</code>/<code>cyrillic</code>/<code>digit</code>/<code>undefined</code>
      */
     static String getSymbolType(char symbol) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return null;
+        String symbolType = "undefined";
+        if (symbol >= 'a' && symbol <='z' || symbol >= 'A' && symbol <= 'Z') {
+            symbolType = "latin";
+        }
+        if (symbol >= 'а' && symbol <= 'я' || symbol >= 'А' && symbol <= 'Я' ) {
+            symbolType = "cyrillic";
+        }
+        if ((int)symbol >= '0' && (int)symbol <= '9') {
+            symbolType = "digit";
+        }
+        return symbolType;
     }
 }
