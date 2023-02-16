@@ -38,12 +38,47 @@ class Task14 {
     /**
      * Определяет названия года по китайскому календарю.
      *
-     * @param year  год дня рождения (больше 0 г. н.э.)
+     * @param year год дня рождения (больше 0 г. н.э.)
      * @return название года по китайскому календарю
      */
     static String getZodiacYearName(int year) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return null;
+        String zodiacYearName = "";
+        if (year % 12 == 1) {
+            zodiacYearName = "Rooster";
+        }
+        if (year % 12 == 2) {
+            zodiacYearName = "Dog";
+        }
+        if (year % 12 == 3) {
+            zodiacYearName = "Pig";
+        }
+        if (year % 12 == 4) {
+            zodiacYearName = "Rat";
+        }
+        if (year % 12 == 5) {
+            zodiacYearName = "Ox";
+        }
+        if (year % 12 == 6) {
+            zodiacYearName = "Tiger";
+        }
+        if (year % 12 == 7) {
+            zodiacYearName = "Rabbit";
+        }
+        if (year % 12 == 8) {
+            zodiacYearName = "Dragon";
+        }
+        if (year % 12 == 9) {
+            zodiacYearName = "Snake";
+        }
+        if (year % 12 == 10) {
+            zodiacYearName = "Horse";
+        }
+        if (year % 12 == 11) {
+            zodiacYearName = "Ram";
+        }
+        if (year % 12 == 0) {
+            zodiacYearName = "Monkey";
+        }
+                return zodiacYearName;
     }
 }
