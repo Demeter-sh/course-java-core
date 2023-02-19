@@ -1,5 +1,7 @@
 package com.rakovets.course.java.core.practice.arrays;
 
+import com.rakovets.course.java.core.util.NumberUtil;
+
 /**
  * Разработать программу для электронного дневника, которая работает с отметками по всем предметам.
  *
@@ -31,9 +33,17 @@ class Task02 {
      * @return средняя арифметическая отметка
      */
     static double getAverageMark(int[][] marks) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return 0.0;
+        int sum = 0;
+        double averageMark = 0.0;
+        int average = 0;
+        for (int i = 0; i < marks.length; i++) {
+            for (int j = 0; j < marks[i].length; j++) {
+                sum += marks[i][j];
+                average++;
+            }
+        }
+        averageMark  = sum / (double)average;
+        return NumberUtil.roundValueToTwoDigitsForMantissa(averageMark);
     }
 
     /**
@@ -43,9 +53,15 @@ class Task02 {
      * @return минимальная отметка
      */
     static int getMinMark(int[][] marks) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return 0;
+       int minMark = marks[0][0];
+       for(int i = 0; i < marks.length; i++) {
+           for (int j = 0; j < marks[i].length; j++ ) {
+               if (minMark > marks[i][j]){
+                   minMark = marks[i][j];
+               }
+           }
+       }
+        return minMark;
     }
 
     /**
@@ -55,8 +71,14 @@ class Task02 {
      * @return максимальная отметка
      */
     static int getMaxMark(int[][] marks) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return 0;
+        int maxMark = marks[0][0];
+        for(int i = 0; i < marks.length; i++) {
+            for (int j = 0; j < marks[i].length; j++ ) {
+                if (maxMark < marks[i][j]){
+                    maxMark = marks[i][j];
+                }
+            }
+        }
+        return maxMark;
     }
 }
