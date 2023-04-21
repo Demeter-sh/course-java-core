@@ -1,6 +1,8 @@
 package com.rakovets.course.java.core.practice.strings;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Разработать программу для разбора (parsing) банковских отчетов.
@@ -18,7 +20,7 @@ class Task02 {
         //FIXME
         // Ниже приведены значения присваиваемые переменным. Их можно изменять для проверки различных вариантов входных
         // аргументов. Типы данных изменять нельзя
-        String bankReport = "Remaining 10$  12$ essentially 13$ unchanged.";
+        String bankReport = "the 1500s when only$12$ five c but 10.51$ also  12 into types11etting  unchanged. 12.49$ It the 1960s with";
 
         double[] moneyFromReport = getArrayMoneyFromReport(bankReport);
         System.out.printf("Money from the report: %s\n", Arrays.toString(moneyFromReport));
@@ -33,9 +35,26 @@ class Task02 {
      * @return список сумм
      */
     static double[] getArrayMoneyFromReport(String report) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return null;
+        double[] number;
+        Pattern pattern1 = Pattern.compile("(.*):");
+        Pattern pattern = Pattern.compile("\\s-?\\d+\\.?\\d+\\$\\s");
+        Matcher matcher = pattern.matcher(report);
+        int counter = 0;
+        StringBuilder str = new StringBuilder();
+
+        while (matcher.find()) {
+            str.append(matcher.group(0));
+            counter++;
+        }
+
+        number = new double[counter];
+        String[] strArray = str.toString().split("\\$");
+
+        for (int i = 0; i < counter; i++) {
+            number[i] = Double.parseDouble(strArray[i]);
+        }
+
+        return number;
     }
 
     /**
@@ -45,8 +64,21 @@ class Task02 {
      * @return общую сумму всех денег
      */
     static double getSumMoneyFromReport(String report) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return 0.0;
+        String[] strArgs = report.split("\\s");
+        int counter = 0;
+        double sumMoney = 0;
+
+        for (String str : strArgs){
+           if(str.matches("-?\\d+\\.?\\d+\\$")) {
+               counter++;
+           }
+        }
+
+        for (String str : strArgs) {
+            if (str.matches("-?\\d+\\.?\\d+\\$")) {
+                sumMoney += Double.parseDouble(str.replace("$", ""));
+            }
+        }
+        return sumMoney;
     }
 }
