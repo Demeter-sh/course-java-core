@@ -79,6 +79,7 @@ class Task02 {
                 sumMoney += Double.parseDouble(str.replace("$", ""));
             }
         }
+
         return sumMoney;
     }
 }
