@@ -30,6 +30,16 @@ class Task03 extends StandardInputTask {
         System.out.printf("Salaries: %s\n", Arrays.toString(salaries));
     }
 
+    static String[][] multiArrayAboutStuff(String informationAboutStuff) {
+        String[] strArray = informationAboutStuff.split(";");
+        String[][] multiStrArray = new String[strArray.length][1];
+
+        for (int i = 0; i < strArray.length; i++) {
+            multiStrArray[i][0] = strArray[i];
+        }
+
+        return multiStrArray;
+    }
     /**
      * Возвращает массив имен персонала.
      *
@@ -37,9 +47,13 @@ class Task03 extends StandardInputTask {
      * @return массив имен персонала, где каждый элемент является именем одного сотрудника
      */
     static String[] parseToArrayName(String informationAboutStuff) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return null;
+
+        String[] strArray = new String[informationAboutStuff.split(";").length];
+        for (int i = 0; i < multiArrayAboutStuff(informationAboutStuff).length; i++){
+            strArray [i] = multiArrayAboutStuff(informationAboutStuff)[i][0].split(" ")[0];
+        }
+
+        return strArray;
     }
 
     /**
@@ -49,9 +63,12 @@ class Task03 extends StandardInputTask {
      * @return массив фамилий персонала, где каждый элемент является фамилией одного сотрудника
      */
     static String[] parseToArraySurname(String informationAboutStuff) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return null;
+        String[] strArray = new String[informationAboutStuff.split(";").length];
+        for (int i = 0; i < multiArrayAboutStuff(informationAboutStuff).length; i++){
+            strArray [i] = multiArrayAboutStuff(informationAboutStuff)[i][0].split(" +")[1];
+        }
+
+        return strArray;
     }
 
     /**
@@ -61,8 +78,12 @@ class Task03 extends StandardInputTask {
      * @return массив зарплат персонала, где каждый элемент является зарплатой одного сотрудника
      */
     static int[] parseToArraySalary(String informationAboutStuff) {
-        //TODO
-        // Код, решающий задачу пишем ниже, при этом используя параметры метода
-        return null;
+        String[] strArray = new String[informationAboutStuff.length()];
+        int[] intArray = new int[informationAboutStuff.split(";").length];
+        for (int i = 0; i < multiArrayAboutStuff(informationAboutStuff).length; i++){
+            strArray [i] = multiArrayAboutStuff(informationAboutStuff)[i][0].split(" +")[2];
+            intArray [i] = Integer.parseInt(strArray[i]);
+        }
+        return intArray;
     }
 }
