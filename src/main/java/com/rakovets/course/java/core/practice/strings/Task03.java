@@ -47,10 +47,10 @@ class Task03 extends StandardInputTask {
      * @return массив имен персонала, где каждый элемент является именем одного сотрудника
      */
     static String[] parseToArrayName(String informationAboutStuff) {
-
         String[] strArray = new String[informationAboutStuff.split(";").length];
+
         for (int i = 0; i < multiArrayAboutStuff(informationAboutStuff).length; i++){
-            strArray [i] = multiArrayAboutStuff(informationAboutStuff)[i][0].split(" ")[0];
+            strArray [i] = multiArrayAboutStuff(informationAboutStuff)[i][0].split(" +")[0];
         }
 
         return strArray;
