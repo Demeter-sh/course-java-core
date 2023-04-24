@@ -33,7 +33,7 @@ class Task01 {
      * @return имя сотрудника
      */
     static String getName(String fullName) {
-        String[] name = fullName.split(" ");
+        String[] name = fullName.split("\\s");
         return name[0];
     }
 
@@ -44,7 +44,7 @@ class Task01 {
      * @return фамилия сотрудника
      */
     static String getSurname(String fullName) {
-        String[] name = fullName.split(" ");
+        String[] name = fullName.split("\\s");
         return name[1];
     }
 
@@ -55,7 +55,7 @@ class Task01 {
      * @return полное имя сотрудника в обратном формате, т.е. '${surname} ${name}'
      */
     static String reverseFullName(String fullName) {
-        String[] name = fullName.split(" ");
+        String[] name = fullName.split("\\s");
         return name[1] + " " + name[0];
     }
 }
