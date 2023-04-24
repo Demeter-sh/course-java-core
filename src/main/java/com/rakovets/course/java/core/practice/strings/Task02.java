@@ -20,7 +20,8 @@ class Task02 {
         //FIXME
         // Ниже приведены значения присваиваемые переменным. Их можно изменять для проверки различных вариантов входных
         // аргументов. Типы данных изменять нельзя
-        String bankReport = "the 1500s when only$12$ five c but 10.51$ also  12 into types11etting  unchanged. 12.49$ It the 1960s with";
+        String bankReport = "the 1500s when only$12$ five c but 10.51$ also  12 into types11etting  unchanged. " +
+                            "12.49$ It the 1960s with";
 
         double[] moneyFromReport = getArrayMoneyFromReport(bankReport);
         System.out.printf("Money from the report: %s\n", Arrays.toString(moneyFromReport));
@@ -36,12 +37,19 @@ class Task02 {
      */
     static double[] getArrayMoneyFromReport(String report) {
         double[] number;
-        Pattern pattern1 = Pattern.compile("(.*):");
         Pattern pattern = Pattern.compile("\\s-?\\d+\\.?\\d+\\$\\s");
         Matcher matcher = pattern.matcher(report);
         int counter = 0;
         StringBuilder str = new StringBuilder();
 
+        /* альтернатива
+        String str = report.split("\\s");
+        for (String str : strArgs){
+            if(str.matches("-?\\d+\\.?\\d+\\$")) {
+                counter++;
+            }
+        }
+        */
         while (matcher.find()) {
             str.append(matcher.group(0));
             counter++;
@@ -65,14 +73,7 @@ class Task02 {
      */
     static double getSumMoneyFromReport(String report) {
         String[] strArgs = report.split("\\s");
-        int counter = 0;
         double sumMoney = 0;
-
-        for (String str : strArgs){
-           if(str.matches("-?\\d+\\.?\\d+\\$")) {
-               counter++;
-           }
-        }
 
         for (String str : strArgs) {
             if (str.matches("-?\\d+\\.?\\d+\\$")) {
