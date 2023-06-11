@@ -1,16 +1,16 @@
 package com.rakovets.course.java.core.practice.oop_classes_and_objects;
 
-class Siamese extends Cat{
+public class Sphynx extends Cat{
 
-    public Siamese(String name) {
+    public Sphynx(String name) {
         super(name);
     }
 
     public String mew() {
-        return "mew";
+        return "niaw";
     }
 
     public String purr() {
-        return "frrr";
+        return "mrrr";
     }
 }
