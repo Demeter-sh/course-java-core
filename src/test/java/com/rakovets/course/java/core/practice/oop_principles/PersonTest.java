@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class PersonTest {
     Person person = new Person(50);
     Cat kate = new Cat("Kate");
-    Persian pers = new Persian("Pers");
+    Persian persian = new Persian("Pers");
     Siamese siam = new Siamese("Siam");
     Sphynx sphynx = new Sphynx("Sphynx");
     @Test
@@ -35,13 +35,13 @@ public class PersonTest {
     }
     @Test
     void persianMeowTest() {
-        pers.mew(person);
+        persian.mew(person);
         Assertions.assertEquals(44, person.getHappiness());
     }
 
     @Test
     void persianPurrTest() {
-        pers.purr(person);
+        persian.purr(person);
         Assertions.assertEquals(56, person.getHappiness());
     }
 
