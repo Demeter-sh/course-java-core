@@ -1,7 +1,7 @@
 package com.rakovets.course.java.core.practice.oop_principles;
 
 public class Zombie extends Enemy{
-    Zombie(String name, int health) {
+    public Zombie(String name, int health) {
         super(name, health);
     }
 
@@ -12,4 +12,18 @@ public class Zombie extends Enemy{
         }
     }
 
+    public String attackHero(Mage mage) {
+        mage.takeDamage(20);
+        return "Zombie attacks mage";
+    }
+
+    public String attackHero(Archer archer) {
+        archer.takeDamage(15);
+        return "Zombie attacks archer";
+    }
+
+    public String attackHero(Warrior warrior) {
+        warrior.takeDamage(10);
+        return "Zombie attacks warrior";
+    }
 }

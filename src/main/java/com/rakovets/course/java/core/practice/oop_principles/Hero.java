@@ -16,6 +16,10 @@ abstract public class Hero {
         return alive;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     public String getName() {
         return name;
     }
