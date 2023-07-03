@@ -1,13 +1,12 @@
 package com.rakovets.course.java.core.practice.oop_principles;
 
 public class Archer extends Hero{
-    String name;
-    Archer(String name) {
-        super(name);
+    Archer(String name, int health) {
+        super(name, health);
     }
 
-    public String attackEnemy(Enemy enemy) {
-        enemy.takeDamage(10);
-        return "Archer attacks enemy";
+    public String attackEnemy(Zombie zombie) {
+        zombie.takeDamage(10);
+        return "Archer attacks zombie";
     }
 }

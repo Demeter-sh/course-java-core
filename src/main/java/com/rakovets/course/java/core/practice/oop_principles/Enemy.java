@@ -1,15 +1,17 @@
 package com.rakovets.course.java.core.practice.oop_principles;
 
-public abstract class Enemy implements Mortal {
-    int health;
-    Enemy(int health) {
+public class Enemy implements Mortal {
+    private int health;
+    private String name;
+    Enemy(String name, int health) {
+        this.name = name;
         this.health = health;
     }
 
     public boolean isAlive() {
-        boolean alive = false;
-        if (health >= 0) {
-            alive = true;
+        boolean alive = true;
+        if (health == 0) {
+            alive = false;
         }
         return alive;
     }
@@ -21,5 +23,15 @@ public abstract class Enemy implements Mortal {
         this.health = health;
     }
 
-    public abstract void takeDamage(int damage);
+    public String getName() {
+        return name;
+    }
+
+    public String attackHero(Hero hero) {
+        return "Enemy attacks Hero";
+    }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+    }
 }

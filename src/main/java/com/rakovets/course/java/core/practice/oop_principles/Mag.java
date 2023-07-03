@@ -1,13 +1,16 @@
 package com.rakovets.course.java.core.practice.oop_principles;
 
 public class Mag extends Hero {
-    String name;
-    Mag(String name) {
-        super(name);
+    Mag(String name, int heath) {
+        super(name, heath);
     }
 
-    public String attackEnemy(Enemy enemy) {
-        enemy.takeDamage(15);
-        return "Archer attacks enemy";
+    public String attackEnemy(Zombie zombie) {
+        if (zombie.isAlive()) {
+            zombie.takeDamage(10);
+            return "Mage attacks zombie";
+        } else
+            zombie.setHealth(0);
+            return "Zombie is dead";
     }
 }
