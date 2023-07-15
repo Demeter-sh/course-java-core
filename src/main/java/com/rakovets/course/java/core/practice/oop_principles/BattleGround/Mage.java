@@ -1,4 +1,7 @@
-package com.rakovets.course.java.core.practice.oop_principles;
+package com.rakovets.course.java.core.practice.oop_principles.BattleGround;
+
+import com.rakovets.course.java.core.practice.oop_principles.BattleGround.Hero;
+import com.rakovets.course.java.core.practice.oop_principles.BattleGround.Zombie;
 
 public class Mage extends Hero {
     public Mage(String name, int heath) {

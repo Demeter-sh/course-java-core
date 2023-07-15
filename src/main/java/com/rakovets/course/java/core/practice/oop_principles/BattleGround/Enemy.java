@@ -1,9 +1,9 @@
-package com.rakovets.course.java.core.practice.oop_principles;
+package com.rakovets.course.java.core.practice.oop_principles.BattleGround;
 
-abstract public class Hero {
-    String name;
-    int health;
-    Hero(String name, int health) {
+public class Enemy implements Mortal {
+    private int health;
+    private String name;
+    Enemy(String name, int health) {
         this.name = name;
         this.health = health;
     }
@@ -15,17 +15,20 @@ abstract public class Hero {
         }
         return alive;
     }
-
     public int getHealth() {
         return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public String getName() {
         return name;
     }
 
-    public String attackEnemy(Enemy enemy) {
-        return null;
+    public String attackHero(Hero hero) {
+        return "Enemy attacks Hero";
     }
 
     public void takeDamage(int damage) {

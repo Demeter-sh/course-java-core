@@ -1,6 +1,6 @@
-package com.rakovets.course.java.core.practice.oop_principles;
+package com.rakovets.course.java.core.practice.oop_principles.BattleGround;
 
-public class Zombie extends Enemy{
+public class Zombie extends Enemy {
     public Zombie(String name, int health) {
         super(name, health);
     }
