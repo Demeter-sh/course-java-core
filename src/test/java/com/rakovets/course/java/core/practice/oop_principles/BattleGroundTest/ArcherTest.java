@@ -1,7 +1,7 @@
 package com.rakovets.course.java.core.practice.oop_principles.BattleGroundTest;
 
-import com.rakovets.course.java.core.practice.oop_principles.Archer;
-import com.rakovets.course.java.core.practice.oop_principles.Zombie;
+import com.rakovets.course.java.core.practice.oop_principles.BattleGround.Archer;
+import com.rakovets.course.java.core.practice.oop_principles.BattleGround.Zombie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
