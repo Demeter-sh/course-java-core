@@ -30,10 +30,6 @@ public class Pair <K, V> {
     public Pair <K, V> getSwapped() {
         return new Pair(this.fieldV, this.fieldK);
     }
-    /*
-     * статический обобщенный `swap()`, принимающий параметр `Pair` и возвращающий `Pair`,
-     * где значения в паре поменяли местами
-     */
     public static<K, V> Pair swap(Pair<K, V> pair) {
         return new Pair<>(pair.getFieldV(), pair.getFieldK());
     }

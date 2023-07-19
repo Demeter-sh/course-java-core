@@ -29,7 +29,7 @@ public class PairTest {
     static Stream<Arguments>provideArgumentsForSwap() {
         return Stream.of(
                 Arguments.of(new Pair<>("number", 1), "1 number"),
-                Arguments.of(new Pair<>(1,"number"), "number 1"),
+                Arguments.of(new Pair<>(2,"number"), "number 2"),
                 Arguments.of(new Pair<>("number", null), "null number")
         );
     }
