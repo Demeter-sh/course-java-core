@@ -36,7 +36,7 @@ public class ReflectionExample4Method {
             // Provide the parameters above with values
             Object[] params = new Object[]{100.00};
 
-            // Get the method by providing its name and a Class array with parameters
+            // Get the method by providing its name and a Person array with parameters
             privateMethod = Student.class.getDeclaredMethod("updateFee", double.class);
 
             // Shuts down security allowing you to access private methods

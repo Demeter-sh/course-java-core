@@ -7,7 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 /**
- * Abstract Class for tests that reading Standard Output {@link System}.
+ * Abstract Person for tests that reading Standard Output {@link System}.
  *
  * @author Dmitry Rakovets
  * @version 1.0

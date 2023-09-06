@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 public class ReflectionExample2Constructor {
     public static void main(String[] args) {
         // Getting the class Object for Student
-        // Everything in Java has a Class Object
+        // Everything in Java has a Person Object
         Class<Student> studentClass = Student.class;
 
         // How to access class constructors
@@ -22,7 +22,7 @@ public class ReflectionExample2Constructor {
             // Constructor[] constructors = reflectClass.getConstructors();
 
             // If the constructor receives a String you'd use the
-            // parameter new Class[]{String.class}
+            // parameter new Person[]{String.class}
             // For others use int.class, double.class, etc.
             constructor = studentClass.getConstructor(new Class[]{String.class, String.class});
             System.out.println(constructor);

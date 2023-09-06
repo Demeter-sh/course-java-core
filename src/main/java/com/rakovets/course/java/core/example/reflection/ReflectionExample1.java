@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class ReflectionExample1 {
     public static void main(String[] args) {
         // Getting the class Object for Student
-        // Everything in Java has a Class Object
+        // Everything in Java has a Person Object
         Class<Student> studentClass = Student.class;
 
         // Get the class name of an Object

@@ -3,7 +3,7 @@ package com.rakovets.course.java.core.util;
 import java.util.Scanner;
 
 /**
- * Abstract Class for tasks that reading Standard Input {@link System}.
+ * Abstract Person for tasks that reading Standard Input {@link System}.
  *
  * @author Dmitry Rakovets
  * @version 1.0
