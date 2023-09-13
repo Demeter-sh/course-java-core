@@ -22,9 +22,9 @@ List<Person> personList = new ArrayList<Person>(List.of(person0, person1, person
 static Stream<Arguments> getArgumentsForgetBestStudent() {
     return Stream.of(Arguments.of( new ArrayList<>(List.of(
             new Person("John", "Smith", 7, 5),
-            new Person("Sergey", "List", 7, 6),
-            new Person("Alexandr", "Belov", 7, 8),
-            new Person("Dmitry", "Sharshukov", 7, 9)
+            new Person("Sergey", "List", 12, 6),
+            new Person("Alexandr", "Belov", 10, 8),
+            new Person("Dmitry", "Sharshukov", 8, 9)
             ))
     ));
 }
