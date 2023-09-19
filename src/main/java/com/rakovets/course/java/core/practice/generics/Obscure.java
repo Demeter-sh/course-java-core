@@ -1,41 +1,45 @@
 package com.rakovets.course.java.core.practice.generics;
 
 public class Obscure <T> {
-    private T obcureOblect;
+    private T obscureObject;
 
     public Obscure(T obcureOblect) {
-        this.obcureOblect = obcureOblect;
+        this.obscureObject = obcureOblect;
     }
 
     public Obscure() {
     }
 
-    public T getObcureOblect() {
-        return obcureOblect;
+    public T getObscureObject() {
+        return obscureObject;
     }
 
     public boolean isPresent() {
-        return getObcureOblect() != null;
+        return getObscureObject() != null;
     }
 
     public boolean isEmpty() {
-        return getObcureOblect() == null;
+        return getObscureObject() == null;
     }
 
     public T orElse(T object) {
-        return isPresent()? obcureOblect: object;
+        return isPresent()? obscureObject : object;
     }
 
 
-    public T orElseThrow(Exception exception) throws Exception {
-        if (isPresent()) {
-            return obcureOblect;
+    public T orElseThrow() {
+        try {
+            if (obscureObject == null) {
+                throw new Exception();
+            }
+        } catch(Exception ex) {
+            return (T) ex.getMessage();
         }
-        throw exception;
+        return obscureObject;
     }
 
-    public static <T> Obscure<T> of(T object) {
-        return new Obscure<T>(object);
+    public static <T> Obscure<T> of(Obscure<T> object) {
+        return object;
     }
 
     public static<T> Obscure<T> empty(){

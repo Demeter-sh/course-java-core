@@ -1,8 +1,6 @@
 package com.rakovets.course.java.core.practice.generics;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,8 +19,8 @@ public class PairTest {
     @ParameterizedTest(name = "Pair getSwappedTest")
     @MethodSource("provideArgumentsForGetSwapped")
     void getSwappedTest(Pair<Object, Object> pair1, String expected) {
-        Pair pair2 = pair1.getSwapped();
-        String actual = pair2.getFieldK() + " " +pair2.getFieldV();
+        Pair<Object, Object> pair2 = pair1.getSwapped();
+        String actual = pair2.getFirst() + " " +pair2.getSecond();
         Assertions.assertEquals(expected, actual);
     }
 
@@ -35,10 +33,10 @@ public class PairTest {
     }
 
     @ParameterizedTest(name = "Pair swapTest")
-    @MethodSource("provideArgumentsForGetSwapped")
+    @MethodSource("provideArgumentsForSwap")
     void swapTest(Pair<Object, Object> pair1, String expected) {
-        Pair pair2 = Pair.swap(pair1);
-        String actual = pair2.getFieldK() + " " +pair2.getFieldV();
+        Pair<Object, Object> pair2 = Pair.swap(pair1);
+        String actual = pair2.getFirst() + " " +pair2.getSecond();
         Assertions.assertEquals(expected, actual);
     }
 }

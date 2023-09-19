@@ -1,36 +1,35 @@
 package com.rakovets.course.java.core.practice.generics;
 
-import jdk.dynalink.beans.StaticClass;
-
 public class Pair <K, V> {
-    private K fieldK;
-    private V fieldV;
+    private K first;
+    private V second;
 
-    public Pair(K fieldK, V fieldV) {
-        this.fieldK = fieldK;
-        this.fieldV = fieldV;
+    public Pair (K first, V second) {
+        this.first = first;
+        this.second = second;
     }
 
-    public K getFieldK() {
-        return fieldK;
+    public K getFirst() {
+        return first;
     }
 
-    public V getFieldV() {
-        return fieldV;
+    public V getSecond() {
+        return second;
     }
 
-    public void setFieldK(K fieldK) {
-        this.fieldK = fieldK;
+    public void setFirst(K first) {
+        this.first = first;
     }
 
-    public void setFieldV(V fieldV) {
-        this.fieldV = fieldV;
+    public void setSecond(V second) {
+        this.second = second;
     }
 
-    public Pair <K, V> getSwapped() {
-        return new Pair(this.fieldV, this.fieldK);
+    public Pair<V, K> getSwapped() {
+        return new Pair<>(getSecond(), getFirst());
     }
-    public static<K, V> Pair swap(Pair<K, V> pair) {
-        return new Pair<>(pair.getFieldV(), pair.getFieldK());
+
+    public static<V, K> Pair<V, K> swap(Pair<K, V> pair) {
+        return new Pair<>(pair.second, pair.first);
     }
 }

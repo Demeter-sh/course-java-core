@@ -12,14 +12,14 @@ public class ObscureTest {
     static Stream<Arguments> provideArgumentsForIsObscure() {
         return Stream.of(
                 Arguments.of( new Obscure<>(null), false),
-                Arguments.of(new Obscure<String>("zxcxz"), true),
+                Arguments.of(new Obscure<>("zxcxz"), true),
                 Arguments.of(new Obscure<>(123456), true)
         );
     }
 
     @ParameterizedTest(name = "Obscure: isPresent")
     @MethodSource("provideArgumentsForIsObscure")
-    void isObscureTest(Obscure obscure, boolean expect){
+    void isObscureTest(Obscure<Object> obscure, boolean expect){
         boolean actual = obscure.isPresent();
 
         Assertions.assertEquals(expect, actual);
@@ -35,7 +35,7 @@ public class ObscureTest {
 
     @ParameterizedTest(name = "Obscure: isEmpty")
     @MethodSource("provideArgumentsForIsEmpty")
-    void isEmptyTest(boolean expected, Obscure obscure) {
+    void isEmptyTest(boolean expected, Obscure<Object> obscure) {
         boolean actual = obscure.isEmpty();
 
         Assertions.assertEquals(expected, actual);
@@ -43,8 +43,8 @@ public class ObscureTest {
 
     static Stream<Arguments> provideArgumentsForOrElse() {
         return Stream.of(
-                Arguments.of(new Obscure<Integer>(123), 123, 123),
-                Arguments.of(new Obscure<Integer>(123), 12, 123)
+                Arguments.of(new Obscure<>(123), 123, 123),
+                Arguments.of(new Obscure<>(123), 12, 123)
         );
     }
 
@@ -58,30 +58,24 @@ public class ObscureTest {
 
     static Stream<Arguments> provideArgumentsForOrElseThrow() {
         return Stream.of(
-                Arguments.of(new Obscure<>("Some line"), new Exception(), "Some line"),
-                Arguments.of(new Obscure<>(null), new Exception(), new Exception().getMessage()),
-                Arguments.of(new Obscure<>(), new Exception(), null)
+                Arguments.of(new Obscure<>("Some line"), "Some line"),
+                Arguments.of(new Obscure<>(null), new Exception().getMessage()),
+                Arguments.of(new Obscure<>(), new Exception().getMessage())
         );
     }
 
     @ParameterizedTest(name = "orElseThrow")
     @MethodSource("provideArgumentsForOrElseThrow")
-    void orElseThrowTest(Obscure<String> obscure, Exception ex, String expected) throws Exception {
-        String actual = "";
-        try {
-            actual = obscure.orElseThrow(ex);
-        } catch (Exception ex0) {
-            actual = ex.getMessage();
-        }
-        Assertions.assertEquals(expected, actual);
+    void orElseThrowTest(Obscure<String> obscure,  String expected) {
+        Assertions.assertEquals(expected, obscure.orElseThrow());
     }
 
     @Test
     void ofTest() {
-        Obscure<String> actual = Obscure.of("Line");
-        Obscure<String> expected = Obscure.of("Line");
+        Obscure<String> actual = new Obscure<>("Null");
+        Obscure<String> expected = Obscure.of(actual);
 
-        Assertions.assertEquals(expected.getObcureOblect(), actual.getObcureOblect());
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -89,6 +83,6 @@ public class ObscureTest {
         Obscure<String> actual = Obscure.empty();
 
 
-        Assertions.assertEquals(null, actual.getObcureOblect());
+        Assertions.assertNull(null, actual.getObscureObject());
     }
 }
