@@ -61,7 +61,7 @@ public class PartyDemo {
     }
 
     static <T> void printQueue(Queue<T> queue) {
-        System.out.println("Queue -> ");
+        System.out.println("QueueContainer -> ");
         for (T t : queue) {
             System.out.println(t);
         }
