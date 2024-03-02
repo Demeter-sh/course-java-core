@@ -25,7 +25,7 @@ public class QueueContainer {
     }
 
     public synchronized void getNumbersOutOfQueue() {
-        String numbersOutOfQueue = "";
+        String numbersOutOfQueue;
 
         try (FileOutputStream fos = new FileOutputStream("D://notes3.txt", true)) {
             for (int i : numbers) {
