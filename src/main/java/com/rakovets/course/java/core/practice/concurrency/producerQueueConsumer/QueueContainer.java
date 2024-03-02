@@ -1,6 +1,6 @@
 package com.rakovets.course.java.core.practice.concurrency.producerQueueConsumer;
 
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Queue;
 import java.util.Scanner;
@@ -16,27 +16,27 @@ public class QueueContainer {
     }
 
     public synchronized void putNumbersIntoQueue() {
-        int x = 0;
-        while (x != -1) {
-            Scanner scanner = new Scanner(System.in);
-            x = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int x;
+        while ((x = sc.nextInt()) != -1) {
             numbers.add(x);
         }
     }
 
     public synchronized void getNumbersOutOfQueue() {
         String numbersOutOfQueue;
-
-        try (FileOutputStream fos = new FileOutputStream("D://notes3.txt", true)) {
+        try (FileWriter fos = new FileWriter("D://notes3.txt", false)) {
             for (int i : numbers) {
                 try {
                     int time = i * milliseconds;
-                    numbersOutOfQueue = "Time of thread sleep " + time;
-                    fos.write(numbersOutOfQueue.getBytes());
+                    numbersOutOfQueue = "Time of thread sleep " + time +"\n";
+                    fos.write(numbersOutOfQueue);
+                    fos.flush();
                     Thread.sleep(1000L * i);
                 } catch (InterruptedException ex) {
                     System.out.println(ex.getMessage());
                 }
+
             }
         } catch (IOException ex){
             logger.warning(ex.getMessage());

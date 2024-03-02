@@ -11,7 +11,8 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        StandardOutputUtil.printlnWithTime("Started");
-        queueContainer.getNumbersOutOfQueue();
+        StandardOutputUtil.printlnWithTime("Consumer started");
+            queueContainer.getNumbersOutOfQueue();
+        StandardOutputUtil.printlnWithTime("Consumer ended");
     }
 }

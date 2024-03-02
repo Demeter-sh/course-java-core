@@ -11,7 +11,8 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-        StandardOutputUtil.printlnWithTime("Started");
+        StandardOutputUtil.printlnWithTime("Producer started");
             queueContainer.putNumbersIntoQueue();
+        StandardOutputUtil.printlnWithTime("Producer ended");
     }
 }
