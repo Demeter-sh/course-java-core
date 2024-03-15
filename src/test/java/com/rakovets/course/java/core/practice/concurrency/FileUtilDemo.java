@@ -10,7 +10,7 @@ public class FileUtilDemo {
         File fileForWriter = new File("D://notes3.txt");
         FileUtil fileUtil = new FileUtil();
         fileUtil.rewriteFromOneSaveToAnotherFile(fileForReader, fileForWriter);
-        List<String> list = fileUtil.getStartsWithVowel3(fileForReader);
+        List<String> list = fileUtil.getWordsEndsWithVowelNextWord(fileForReader);
         ListIterator<String> listIterator = list.listIterator();
         while (listIterator.hasNext()) {
             System.out.println(listIterator.next());

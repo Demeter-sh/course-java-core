@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class FileUtil {
     Logger logger = Logger.getLogger(FileUtil.class.getName());
@@ -92,5 +93,28 @@ public class FileUtil {
 
 
         return  listWithVowel;
+    }
+
+    public List<String> getWordsEndsWithVowelNextWord(File file) {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<String> list = new ArrayList<>();
+        try (FileReader fileReader = new FileReader(file)) {
+            int c;
+            while ((c = fileReader.read()) != -1) {
+                stringBuilder.append((char) c);
+            }
+            String[] stringArray = stringBuilder.toString()
+                    .replaceAll("[,./?!@#$%^&*()\\-_+=]","")
+                    .split(" +");
+
+            IntStream.rangeClosed(0, stringArray.length - 2)
+                    .boxed()
+                    .filter(n -> stringArray[n].toUpperCase().substring(stringArray[n].length() -1)
+                            .equals(stringArray[n + 1].toUpperCase().substring(0, 1)))
+                    .forEach(n -> list.add(stringArray[n]));
+        } catch (IOException IOEx) {
+            logger.warning(IOEx.getMessage());
+        }
+        return list;
     }
 }
