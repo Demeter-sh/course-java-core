@@ -1,12 +1,7 @@
 package com.rakovets.course.java.core.practice.concurrency;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -144,5 +139,26 @@ public class FileUtil {
         return listOfDistinctNumbers;
     }
 
+    public Map<String, Integer> getRepetitionLettersInText(File file) {
+        Map<String, Integer> map = new HashMap<>();
+        char[] charArraysOfLetters = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+            StringBuilder stringBuilderReader = new StringBuilder();
+            String string;
+            while ((string = bufferedReader.readLine()) != null) {
+                stringBuilderReader.append(string);
+            }
+
+            for (char c : charArraysOfLetters) {
+                int count = stringBuilderReader.toString().length() - stringBuilderReader.toString().replace(String.valueOf(c), "").length();
+                    map.put(String.valueOf(c), count);
+
+            }
+
+        } catch (IOException IOEx) {
+            logger.warning(IOEx.getMessage());
+        }
+        return map;
+    }
 
 }
