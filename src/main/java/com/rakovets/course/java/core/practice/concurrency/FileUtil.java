@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 
 public class FileUtil {
     Logger logger = Logger.getLogger(FileUtil.class.getName());
-    public void rewriteFromOneSaveToAnotherFile(File fileForReader, File fileForWriter) {
+    public void rewriteFromOneSaveToAnotherFile(File fileForReader, File fileForWriter)  {
         StringBuilder stringBuilderFileRead = new StringBuilder();
         try (FileReader fileReader = new FileReader(fileForReader);
                 FileWriter fileWriter = new FileWriter(fileForWriter)){
@@ -117,4 +117,32 @@ public class FileUtil {
         }
         return list;
     }
+
+    public List<String> getListOfNumbers(File file) {
+        StringBuilder stringBuilderFile = new StringBuilder();
+        List<String> listOfDistinctNumbers = new ArrayList<>();
+        try (FileReader fileReader = new FileReader(file)) {
+            int c;
+            while ((c = fileReader.read()) != -1) {
+                stringBuilderFile.append((char) c);
+            }
+
+            String[] stringsArrayOfNumber = stringBuilderFile.toString().split("\n");
+            for (String string : stringsArrayOfNumber) {
+                StringBuilder stringBuilderOfNumber = new StringBuilder();
+                Arrays.stream(string.split(" "))
+                        .distinct()
+                        .limit(3)
+                        .forEach(stringBuilderOfNumber::append);
+                listOfDistinctNumbers.add(stringBuilderOfNumber.toString());
+                stringBuilderOfNumber.delete(0, stringBuilderOfNumber.length());
+            }
+
+        } catch (IOException IOEx) {
+            logger.warning(IOEx.getMessage());
+        }
+        return listOfDistinctNumbers;
+    }
+
+
 }
