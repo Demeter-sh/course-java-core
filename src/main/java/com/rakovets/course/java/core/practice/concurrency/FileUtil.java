@@ -161,4 +161,23 @@ public class FileUtil {
         return map;
     }
 
+    public Map<String, Integer> getWordsRepetitionInText(File file) {
+        Map<String, Integer> map = new HashMap<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            StringBuilder stringBuilderReader = new StringBuilder();
+            String string;
+            while ((string = bufferedReader.readLine()) != null) {
+                stringBuilderReader.append(string);
+            }
+            stringBuilderReader = new StringBuilder(stringBuilderReader.toString().replaceAll("[.,/?!]", " "));
+
+            for (String s : stringBuilderReader.toString().split(" ")){
+                int count = (stringBuilderReader.toString().length() - stringBuilderReader.toString().replace(s, "").length()) / s.length();
+                map.put(s, count);
+            }
+        } catch (IOException IOEx) {
+            logger.warning(IOEx.getMessage());
+        }
+        return map;
+    }
 }

@@ -20,9 +20,14 @@ public class FileUtilDemo {
             System.out.println(listOfNumber);
         }
         */
-        Map<String, Integer> mapOfRepetitionOfLetters = fileUtil.getRepetitionLettersInText(fileForReader);
+        /*Map<String, Integer> mapOfRepetitionOfLetters = fileUtil.getRepetitionLettersInText(fileForReader);
         for (Map.Entry<String, Integer> item : mapOfRepetitionOfLetters.entrySet()) {
             System.out.printf("Letter %s repeats %d times\n", item.getKey(), item.getValue());
+        }
+        */
+        Map<String, Integer> mapOfRepetitionOfWords = fileUtil.getWordsRepetitionInText(fileForReader);
+        for (Map.Entry<String, Integer> item : mapOfRepetitionOfWords.entrySet()) {
+            System.out.printf("Word %s - repeats %d times\n", item.getKey(), item.getValue());
         }
     }
 }
