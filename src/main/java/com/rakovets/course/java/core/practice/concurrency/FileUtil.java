@@ -9,10 +9,11 @@ import java.util.stream.IntStream;
 
 public class FileUtil {
     Logger logger = Logger.getLogger(FileUtil.class.getName());
-    public void rewriteFromOneSaveToAnotherFile(File fileForReader, File fileForWriter)  {
+
+    public void rewriteFromOneSaveToAnotherFile(File fileForReader, File fileForWriter) {
         StringBuilder stringBuilderFileRead = new StringBuilder();
         try (FileReader fileReader = new FileReader(fileForReader);
-                FileWriter fileWriter = new FileWriter(fileForWriter)){
+             FileWriter fileWriter = new FileWriter(fileForWriter)) {
             int c;
             while ((c = fileReader.read()) != -1) {
                 stringBuilderFileRead.append((char) c);
@@ -28,7 +29,7 @@ public class FileUtil {
         StringBuilder stringBuilder = new StringBuilder();
         try (FileReader fileReader = new FileReader(file)) {
             int c;
-            while((c = fileReader.read()) != -1) {
+            while ((c = fileReader.read()) != -1) {
                 stringBuilder.append((char) c);
             }
         } catch (IOException IOEx) {
@@ -40,7 +41,7 @@ public class FileUtil {
         while (matcher.find()) {
             listWithVowel.add(matcher.group());
         }
-       return  listWithVowel;
+        return listWithVowel;
     }
 
     public List<String> getStartsWithVowel2(File file) {
@@ -48,7 +49,7 @@ public class FileUtil {
         StringBuilder stringBuilder = new StringBuilder();
         try (FileReader fileReader = new FileReader(file)) {
             int c;
-            while((c = fileReader.read()) != -1) {
+            while ((c = fileReader.read()) != -1) {
                 stringBuilder.append((char) c);
             }
         } catch (IOException IOEx) {
@@ -65,7 +66,7 @@ public class FileUtil {
                 listWithVowel.add(s);
             }
         }
-        return  listWithVowel;
+        return listWithVowel;
     }
 
     public List<String> getStartsWithVowel3(File file) {
@@ -73,21 +74,21 @@ public class FileUtil {
         StringBuilder stringBuilder = new StringBuilder();
         try (FileReader fileReader = new FileReader(file)) {
             int c;
-            while((c = fileReader.read()) != -1) {
+            while ((c = fileReader.read()) != -1) {
                 stringBuilder.append((char) c);
             }
-            String[] strArray = stringBuilder.toString().replaceAll("[,./?!@#$%^&*()\\-_+=]","")
+            String[] strArray = stringBuilder.toString().replaceAll("[,./?!@#$%^&*()\\-_+=]", "")
                     .split(" +");
 
             Arrays.stream(strArray)
-                    .filter(x ->x.substring(0,1).matches("[EeYyUuIiOoAa]"))
+                    .filter(x -> x.substring(0, 1).matches("[EeYyUuIiOoAa]"))
                     .forEach(listWithVowel::add);
         } catch (IOException IOEx) {
             logger.warning(IOEx.getMessage());
         }
 
 
-        return  listWithVowel;
+        return listWithVowel;
     }
 
     public List<String> getWordsEndsWithVowelNextWord(File file) {
@@ -99,12 +100,12 @@ public class FileUtil {
                 stringBuilder.append((char) c);
             }
             String[] stringArray = stringBuilder.toString()
-                    .replaceAll("[,./?!@#$%^&*()\\-_+=]","")
+                    .replaceAll("[,./?!@#$%^&*()\\-_+=]", "")
                     .split(" +");
 
             IntStream.rangeClosed(0, stringArray.length - 2)
                     .boxed()
-                    .filter(n -> stringArray[n].toUpperCase().substring(stringArray[n].length() -1)
+                    .filter(n -> stringArray[n].toUpperCase().substring(stringArray[n].length() - 1)
                             .equals(stringArray[n + 1].toUpperCase().substring(0, 1)))
                     .forEach(n -> list.add(stringArray[n]));
         } catch (IOException IOEx) {
@@ -142,7 +143,7 @@ public class FileUtil {
     public Map<String, Integer> getRepetitionLettersInText(File file) {
         Map<String, Integer> map = new HashMap<>();
         char[] charArraysOfLetters = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             StringBuilder stringBuilderReader = new StringBuilder();
             String string;
             while ((string = bufferedReader.readLine()) != null) {
@@ -151,7 +152,7 @@ public class FileUtil {
 
             for (char c : charArraysOfLetters) {
                 int count = stringBuilderReader.toString().length() - stringBuilderReader.toString().replace(String.valueOf(c), "").length();
-                    map.put(String.valueOf(c), count);
+                map.put(String.valueOf(c), count);
 
             }
 
@@ -171,7 +172,7 @@ public class FileUtil {
             }
             stringBuilderReader = new StringBuilder(stringBuilderReader.toString().replaceAll("[.,/?!]", " "));
 
-            for (String s : stringBuilderReader.toString().split(" ")){
+            for (String s : stringBuilderReader.toString().split(" ")) {
                 int count = (stringBuilderReader.toString().length() - stringBuilderReader.toString().replace(s, "").length()) / s.length();
                 map.put(s, count);
             }
@@ -179,5 +180,45 @@ public class FileUtil {
             logger.warning(IOEx.getMessage());
         }
         return map;
+    }
+
+    public List<Integer> getListOfNumberInAscendingOrder(File file) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file + "_"))) {
+            StringBuilder stringBuilderReader = new StringBuilder();
+            String s;
+            while ((s = bufferedReader.readLine()) != null) {
+            stringBuilderReader.append(s);
+            }
+
+            for(String string : stringBuilderReader.toString().trim().split(" ")){
+                arrayList.add(Integer.parseInt(string));
+            }
+
+            arrayList.sort(Comparator.naturalOrder());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return arrayList;
+    }
+
+    public void getTestMapOfStudentsAverageMark(File file) {
+        Map<String, Integer> map = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            StringBuilder stringBuilderReader = new StringBuilder();
+            String s;
+            while ((s = bufferedReader.readLine()) != null) {
+                stringBuilderReader.append(s);
+            }
+            for (String studentMarks : stringBuilderReader.toString().split(" ")) {
+                String[] marksString = studentMarks.replaceAll("\\D", " ").trim().split("\\s+");
+                for (String string : marksString) {
+                    System.out.println(string);
+                }
+                }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
