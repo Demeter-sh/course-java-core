@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 @DisplayName("Cat House")
 public class CatHouseTest {
-    Person person = new Person();
+    Person person1 = new Person();
     Persian persianFlint = new Persian("Flint");
     Siamese siameseSmoke = new Siamese("Smoke");
     Sphynx sphinxNeal = new Sphynx("Neal");
@@ -38,39 +38,39 @@ public class CatHouseTest {
     @Test
     void TestPersianPurrs() {
         Person actualPerson = new Person(14);
-        persianFlint.purr(person);
-        Assertions.assertEquals(person.getHappiness(), actualPerson.getHappiness());
+        persianFlint.purr(person1);
+        Assertions.assertEquals(person1.getHappiness(), actualPerson.getHappiness());
     }
 
     @Test
     void TestPersianMews() {
         Person actualPerson = new Person(6);
-        persianFlint.mew(person);
-        Assertions.assertEquals(person.getHappiness(), actualPerson.getHappiness());
+        persianFlint.mew(person1);
+        Assertions.assertEquals(person1.getHappiness(), actualPerson.getHappiness());
     }
 
     @Test
     void TestSiameseMews() {
         Person actualPerson = new Person(4);
-        siameseSmoke.mew(person);
-        Assertions.assertEquals(person.getHappiness(), actualPerson.getHappiness());
+        siameseSmoke.mew(person1);
+        Assertions.assertEquals(person1.getHappiness(), actualPerson.getHappiness());
     }
 
     @Test
     void TestSiamesePurrs() {
-        siameseSmoke.purr(person);
-        Assertions.assertEquals(person.getHappiness(), new Person(16).getHappiness());
+        siameseSmoke.purr(person1);
+        Assertions.assertEquals(person1.getHappiness(), new Person(16).getHappiness());
     }
 
     @Test
     void TesSphinxPurrs() {
-        sphinxNeal.purr(person);
-        Assertions.assertEquals(person.getHappiness(), new Person(17).getHappiness());
+        sphinxNeal.purr(person1);
+        Assertions.assertEquals(person1.getHappiness(), new Person(17).getHappiness());
     }
 
     @Test
     void TestSphinxMew() {
-        sphinxNeal.mew(person);
-        Assertions.assertEquals(person.getHappiness(), new Person(3).getHappiness());
+        sphinxNeal.mew(person1);
+        Assertions.assertEquals(person1.getHappiness(), new Person(3).getHappiness());
     }
 }
