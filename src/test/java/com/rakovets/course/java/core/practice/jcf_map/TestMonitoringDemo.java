@@ -10,16 +10,15 @@ public class TestMonitoringDemo {
         String text = "Aba and Preach Aba word";
         // Проверка метода, который выделяет все различные слова и высчитывает частоту их повторения.
         Map<String, Integer> wordMap = tm.researchText(text);
-        System.out.println("researchText()");
         System.out.println("Research text - \"Aba and Preach Aba word\". Get it's words frequency repetition.");
 
         for (Map.Entry<String, Integer> item : wordMap.entrySet()) {
             System.out.printf("%s - %d\n", item.getKey(), item.getValue());
         }
 
-        //Проверка метода, который возвращает количество уникальных слов в тексте
+        //Проверка метода, который возвращает количество уникальных слов в тексте getCountUniqueWords()
         Map<String, Integer> countUniqueWordsMap = tm.getCountUniqueWords(text);
-        System.out.println("\ngetCountUniqueWords() - " + text);
+        System.out.println("\ngetCountUniqueWords() - " + text + "\n");
 
         for (Map.Entry<String, Integer> item : countUniqueWordsMap.entrySet()) {
             System.out.printf("%s - %d\n", item.getKey(), item.getValue());
@@ -28,18 +27,18 @@ public class TestMonitoringDemo {
 
         //Проверка метода выводящего уникальные слова из текста в строку
         String lineFromGetUniqueWordsFromText = tm.getUniqueWordsFromText(text);
-        System.out.println("Method getUniqueWordsFromText - " + lineFromGetUniqueWordsFromText);
+        System.out.println("Method getUniqueWordsFromText - " + lineFromGetUniqueWordsFromText + "\n");
 
-        //Проверка метода возвращающего
+        //Проверка метода getUniqueWords()
         Map<String, String> uniqueWordsMap = tm.getUniqueWords(text);
         for (Map.Entry<String, String> item : uniqueWordsMap.entrySet()) {
             System.out.printf("%s - %s\n", item.getKey(), item.getValue());
         }
 
-        System.out.println("Word's frequency " + tm.getFrequencyWord(text));
+        System.out.println("\nWord's frequency " + tm.getFrequencyWord(text));
 
         //Проверка метода getFrequencyWords(boolean isAscendingFrequency)
-        System.out.println("Проверка метода getFrequencyWords(boolean isAscendingFrequency)");
+        System.out.println("\nПроверка метода getFrequencyWords(boolean isAscendingFrequency)");
         Map<String, Integer> frequencyWordsTrueMap = tm.getFrequencyWords(true, text);
         System.out.println("true");
         for (Map.Entry<String, Integer> item : frequencyWordsTrueMap.entrySet()) {
